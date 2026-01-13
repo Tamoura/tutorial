@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Enhancement Visual Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Car Enhancement Studio</h1>
+            <p class="subtitle">Visualize your dream car modifications</p>
+        </header>
+
+        <main>
+            <div class="car-display">
+                <div class="car-container">
+                    <svg id="car-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Car Body -->
+                        <g id="car-body">
+                            <!-- Main body -->
+                            <path id="body-main" class="car-body-color" d="M150 250 L200 250 L220 200 L320 180 L480 180 L550 200 L600 200 L650 250 L700 250 L700 280 L680 300 L620 300 L600 280 L250 280 L230 300 L170 300 L150 280 Z" />
+                            <!-- Roof -->
+                            <path id="body-roof" class="car-body-color" d="M280 180 L320 120 L480 120 L520 180 Z" />
+                            <!-- Hood -->
+                            <path id="body-hood" class="car-body-color" d="M520 180 L550 200 L650 200 L680 220 L700 250 L550 250 L550 200 L520 180 Z" />
+                            <!-- Trunk -->
+                            <path id="body-trunk" class="car-body-color" d="M150 250 L200 250 L220 200 L280 180 L280 200 L200 220 L150 250 Z" />
+                        </g>
+
+                        <!-- Windows -->
+                        <g id="car-windows">
+                            <path id="window-front" class="window-tint" d="M485 175 L515 130 L475 130 L450 175 Z" />
+                            <path id="window-rear" class="window-tint" d="M350 175 L325 130 L365 130 L390 175 Z" />
+                            <path id="window-side" class="window-tint" d="M395 175 L370 130 L470 130 L445 175 Z" />
+                        </g>
+
+                        <!-- Headlights -->
+                        <g id="headlights">
+                            <ellipse id="headlight-front" cx="670" cy="235" rx="20" ry="12" fill="#ffffcc" stroke="#333" stroke-width="2"/>
+                            <ellipse id="taillight-rear" cx="165" cy="255" rx="12" ry="8" fill="#ff3333" stroke="#333" stroke-width="2"/>
+                        </g>
+
+                        <!-- Wheels -->
+                        <g id="wheels">
+                            <!-- Front Wheel -->
+                            <g id="wheel-front" class="wheel">
+                                <circle cx="580" cy="300" r="45" fill="#1a1a1a" stroke="#333" stroke-width="3"/>
+                                <circle cx="580" cy="300" r="35" class="rim-color" stroke="#666" stroke-width="2"/>
+                                <circle cx="580" cy="300" r="8" fill="#333"/>
+                                <!-- Rim spokes -->
+                                <g class="rim-spokes">
+                                    <line x1="580" y1="270" x2="580" y2="290" stroke="#444" stroke-width="4"/>
+                                    <line x1="580" y1="310" x2="580" y2="330" stroke="#444" stroke-width="4"/>
+                                    <line x1="550" y1="300" x2="570" y2="300" stroke="#444" stroke-width="4"/>
+                                    <line x1="590" y1="300" x2="610" y2="300" stroke="#444" stroke-width="4"/>
+                                    <line x1="559" y1="279" x2="572" y2="292" stroke="#444" stroke-width="4"/>
+                                    <line x1="588" y1="308" x2="601" y2="321" stroke="#444" stroke-width="4"/>
+                                    <line x1="559" y1="321" x2="572" y2="308" stroke="#444" stroke-width="4"/>
+                                    <line x1="588" y1="292" x2="601" y2="279" stroke="#444" stroke-width="4"/>
+                                </g>
+                            </g>
+                            <!-- Rear Wheel -->
+                            <g id="wheel-rear" class="wheel">
+                                <circle cx="220" cy="300" r="45" fill="#1a1a1a" stroke="#333" stroke-width="3"/>
+                                <circle cx="220" cy="300" r="35" class="rim-color" stroke="#666" stroke-width="2"/>
+                                <circle cx="220" cy="300" r="8" fill="#333"/>
+                                <!-- Rim spokes -->
+                                <g class="rim-spokes">
+                                    <line x1="220" y1="270" x2="220" y2="290" stroke="#444" stroke-width="4"/>
+                                    <line x1="220" y1="310" x2="220" y2="330" stroke="#444" stroke-width="4"/>
+                                    <line x1="190" y1="300" x2="210" y2="300" stroke="#444" stroke-width="4"/>
+                                    <line x1="230" y1="300" x2="250" y2="300" stroke="#444" stroke-width="4"/>
+                                    <line x1="199" y1="279" x2="212" y2="292" stroke="#444" stroke-width="4"/>
+                                    <line x1="228" y1="308" x2="241" y2="321" stroke="#444" stroke-width="4"/>
+                                    <line x1="199" y1="321" x2="212" y2="308" stroke="#444" stroke-width="4"/>
+                                    <line x1="228" y1="292" x2="241" y2="279" stroke="#444" stroke-width="4"/>
+                                </g>
+                            </g>
+                        </g>
+
+                        <!-- Spoiler (hidden by default) -->
+                        <g id="spoiler" class="enhancement hidden">
+                            <path class="car-body-color" d="M130 245 L100 220 L90 220 L90 230 L120 250 L150 250 Z"/>
+                            <rect x="85" y="215" width="20" height="8" fill="#222"/>
+                        </g>
+
+                        <!-- Body Kit (hidden by default) -->
+                        <g id="body-kit" class="enhancement hidden">
+                            <path fill="#222" d="M150 280 L700 280 L700 290 L680 295 L170 295 L150 290 Z"/>
+                            <path fill="#333" d="M620 285 L650 285 L650 292 L620 292 Z"/>
+                            <path fill="#333" d="M200 285 L230 285 L230 292 L200 292 Z"/>
+                        </g>
+
+                        <!-- Hood Scoop (hidden by default) -->
+                        <g id="hood-scoop" class="enhancement hidden">
+                            <path fill="#222" d="M580 195 L620 195 L625 205 L575 205 Z"/>
+                            <path fill="#111" d="M585 198 L615 198 L618 203 L582 203 Z"/>
+                        </g>
+
+                        <!-- Racing Stripes (hidden by default) -->
+                        <g id="racing-stripes" class="enhancement hidden">
+                            <path class="stripe-color" d="M320 180 L340 180 L340 120 L330 120 L320 180 Z M480 180 L500 180 L510 120 L500 120 L480 180 Z" opacity="0.9"/>
+                            <path class="stripe-color" d="M340 200 L360 200 L380 180 L340 180 Z M500 200 L520 200 L520 180 L480 180 Z" opacity="0.9"/>
+                        </g>
+
+                        <!-- Lowered suspension indicator -->
+                        <g id="lowered" class="hidden">
+                            <!-- Ground line when lowered -->
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="comparison-toggle">
+                    <button id="toggle-comparison" class="btn btn-secondary">Show Before/After</button>
+                </div>
+            </div>
+
+            <div class="controls-panel">
+                <div class="control-section">
+                    <h3>Body Color</h3>
+                    <div class="color-options">
+                        <button class="color-btn" data-color="#cc0000" style="background: #cc0000;" title="Red"></button>
+                        <button class="color-btn" data-color="#0066cc" style="background: #0066cc;" title="Blue"></button>
+                        <button class="color-btn" data-color="#000000" style="background: #000000;" title="Black"></button>
+                        <button class="color-btn" data-color="#ffffff" style="background: #ffffff; border: 2px solid #ccc;" title="White"></button>
+                        <button class="color-btn" data-color="#ffcc00" style="background: #ffcc00;" title="Yellow"></button>
+                        <button class="color-btn" data-color="#00cc66" style="background: #00cc66;" title="Green"></button>
+                        <button class="color-btn" data-color="#ff6600" style="background: #ff6600;" title="Orange"></button>
+                        <button class="color-btn" data-color="#6600cc" style="background: #6600cc;" title="Purple"></button>
+                        <button class="color-btn" data-color="#c0c0c0" style="background: linear-gradient(135deg, #e0e0e0, #a0a0a0);" title="Silver"></button>
+                        <button class="color-btn" data-color="#1a1a2e" style="background: #1a1a2e;" title="Midnight Blue"></button>
+                    </div>
+                    <div class="custom-color">
+                        <label for="custom-body-color">Custom:</label>
+                        <input type="color" id="custom-body-color" value="#cc0000">
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Wheel Style</h3>
+                    <div class="wheel-options">
+                        <button class="wheel-btn active" data-rim="stock">Stock</button>
+                        <button class="wheel-btn" data-rim="sport">Sport</button>
+                        <button class="wheel-btn" data-rim="luxury">Luxury</button>
+                        <button class="wheel-btn" data-rim="racing">Racing</button>
+                    </div>
+                    <div class="rim-colors">
+                        <h4>Rim Color</h4>
+                        <button class="rim-color-btn" data-color="#c0c0c0" style="background: #c0c0c0;" title="Silver"></button>
+                        <button class="rim-color-btn" data-color="#1a1a1a" style="background: #1a1a1a;" title="Black"></button>
+                        <button class="rim-color-btn" data-color="#ffd700" style="background: #ffd700;" title="Gold"></button>
+                        <button class="rim-color-btn" data-color="#b87333" style="background: #b87333;" title="Bronze"></button>
+                        <button class="rim-color-btn" data-color="#cc0000" style="background: #cc0000;" title="Red"></button>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Window Tint</h3>
+                    <div class="tint-options">
+                        <button class="tint-btn active" data-tint="none">None</button>
+                        <button class="tint-btn" data-tint="light">Light</button>
+                        <button class="tint-btn" data-tint="medium">Medium</button>
+                        <button class="tint-btn" data-tint="dark">Dark</button>
+                        <button class="tint-btn" data-tint="limo">Limo</button>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Enhancements</h3>
+                    <div class="enhancement-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="spoiler-toggle"> Rear Spoiler
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="bodykit-toggle"> Body Kit
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="hoodscoop-toggle"> Hood Scoop
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="stripes-toggle"> Racing Stripes
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="lowered-toggle"> Lowered Suspension
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Stripe Color</h3>
+                    <div class="stripe-colors">
+                        <button class="stripe-color-btn" data-color="#ffffff" style="background: #ffffff; border: 2px solid #ccc;" title="White"></button>
+                        <button class="stripe-color-btn" data-color="#000000" style="background: #000000;" title="Black"></button>
+                        <button class="stripe-color-btn" data-color="#ffd700" style="background: #ffd700;" title="Gold"></button>
+                        <button class="stripe-color-btn" data-color="#c0c0c0" style="background: #c0c0c0;" title="Silver"></button>
+                        <button class="stripe-color-btn" data-color="#cc0000" style="background: #cc0000;" title="Red"></button>
+                        <button class="stripe-color-btn" data-color="#0066cc" style="background: #0066cc;" title="Blue"></button>
+                    </div>
+                </div>
+
+                <div class="control-section actions">
+                    <button id="reset-btn" class="btn btn-warning">Reset All</button>
+                    <button id="randomize-btn" class="btn btn-primary">Randomize</button>
+                    <button id="export-btn" class="btn btn-success">Export Image</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Car Enhancement Visual Tool - Design Your Dream Ride</p>
+        </footer>
+    </div>
+
+    <!-- Comparison Modal -->
+    <div id="comparison-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Before / After Comparison</h2>
+            <div class="comparison-container">
+                <div class="comparison-side">
+                    <h3>Before</h3>
+                    <div id="before-car"></div>
+                </div>
+                <div class="comparison-side">
+                    <h3>After</h3>
+                    <div id="after-car"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
