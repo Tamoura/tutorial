@@ -1,0 +1,18 @@
+serverConfVersion: 1
+Log:
+  consoleLog: true
+  consoleLogFormat: json
+RestAdminListener:
+  port: 7600
+  authorizationEnabled: false
+  hostName: '+'
+HTTPListener:
+  port: 7800
+ResourceManagers:
+  JVM:
+    jvmMaxHeapSize: 512
+    jvmMinHeapSize: 256
+Statistics:
+  Snapshot:
+    publicationOn: active
+    outputFormat: json

@@ -1,0 +1,66 @@
+# Kubernetes manifests for sample-rest-api
+# Copy and customize from: ../../k8s/deployment.yaml
+# Replace <service-name> with: sample-rest-api
+# Replace <registry> with your container registry
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-rest-api
+  namespace: ace-services
+  labels:
+    app: sample-rest-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample-rest-api
+  template:
+    metadata:
+      labels:
+        app: sample-rest-api
+    spec:
+      containers:
+        - name: ace-server
+          image: <registry>/sample-rest-api:latest
+          ports:
+            - containerPort: 7600
+            - containerPort: 7800
+          env:
+            - name: LICENSE
+              value: "accept"
+          livenessProbe:
+            httpGet:
+              path: /apiv2/servers/defaultServer
+              port: 7600
+            initialDelaySeconds: 60
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /apiv2/servers/defaultServer
+              port: 7600
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-rest-api
+  namespace: ace-services
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 7800
+      targetPort: 7800
+    - name: admin
+      port: 7600
+      targetPort: 7600
+  selector:
+    app: sample-rest-api

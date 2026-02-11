@@ -1,0 +1,167 @@
+# =============================================================================
+# GitHub Actions CI/CD Pipeline for ACE Microservices
+# =============================================================================
+# This pipeline builds, tests, and deploys an ACE containerized microservice.
+# Place this file at: .github/workflows/ace-service-ci.yaml
+# =============================================================================
+
+name: ACE Microservice CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'services/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'services/**'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_PREFIX: ${{ github.repository }}
+
+jobs:
+  # -------------------------------------------------------
+  # Detect which services changed
+  # -------------------------------------------------------
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      services: ${{ steps.changes.outputs.services }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed services
+        id: changes
+        run: |
+          # Find which service directories have changes
+          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
+            | grep '^services/' \
+            | cut -d'/' -f2 \
+            | sort -u \
+            | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "services=$CHANGED" >> "$GITHUB_OUTPUT"
+
+  # -------------------------------------------------------
+  # Build, test, and push container image
+  # -------------------------------------------------------
+  build-and-test:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.services != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.detect-changes.outputs.services) }}
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build container image
+        uses: docker/build-push-action@v5
+        with:
+          context: services/${{ matrix.service }}
+          file: services/${{ matrix.service }}/Dockerfile
+          push: false
+          load: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/${{ matrix.service }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/${{ matrix.service }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run integration tests
+        run: |
+          # Start the container
+          docker run -d --name ace-test \
+            -p 7600:7600 -p 7800:7800 \
+            -e LICENSE=accept \
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/${{ matrix.service }}:${{ github.sha }}
+
+          # Wait for the server to be ready
+          echo "Waiting for ACE server to start..."
+          for i in $(seq 1 60); do
+            if curl -sf http://localhost:7600/apiv2/servers/defaultServer > /dev/null 2>&1; then
+              echo "ACE server is ready"
+              break
+            fi
+            sleep 5
+          done
+
+          # Run tests (customize per service)
+          if [ -d "services/${{ matrix.service }}/tests" ]; then
+            cd "services/${{ matrix.service }}/tests"
+            if [ -f "run-tests.sh" ]; then
+              bash run-tests.sh
+            fi
+          fi
+
+          # Cleanup
+          docker stop ace-test && docker rm ace-test
+
+      - name: Push to registry
+        if: github.ref == 'refs/heads/main'
+        uses: docker/build-push-action@v5
+        with:
+          context: services/${{ matrix.service }}
+          file: services/${{ matrix.service }}/Dockerfile
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/${{ matrix.service }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/${{ matrix.service }}:latest
+          cache-from: type=gha
+
+  # -------------------------------------------------------
+  # Deploy to staging (on main branch)
+  # -------------------------------------------------------
+  deploy-staging:
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: staging
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.detect-changes.outputs.services) }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Configure kubeconfig
+        run: |
+          echo "${{ secrets.KUBE_CONFIG_STAGING }}" | base64 -d > kubeconfig
+          echo "KUBECONFIG=$(pwd)/kubeconfig" >> "$GITHUB_ENV"
+
+      - name: Deploy to staging
+        run: |
+          # Update image tag in deployment
+          kubectl set image deployment/${{ matrix.service }} \
+            ace-server=${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}/${{ matrix.service }}:${{ github.sha }} \
+            -n ace-services
+
+          # Wait for rollout
+          kubectl rollout status deployment/${{ matrix.service }} \
+            -n ace-services --timeout=300s
+
+      - name: Run smoke tests
+        run: |
+          SERVICE_URL=$(kubectl get svc ${{ matrix.service }} -n ace-services \
+            -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+          curl -sf "http://${SERVICE_URL}:7600/apiv2/servers/defaultServer" || exit 1

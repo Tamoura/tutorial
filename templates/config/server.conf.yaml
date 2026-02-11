@@ -1,0 +1,44 @@
+# =============================================================================
+# ACE Integration Server Configuration
+# =============================================================================
+# This file is mounted into the container via ConfigMap or baked into the image.
+# Override values at runtime using environment variables where supported.
+# =============================================================================
+
+serverConfVersion: 1
+
+Log:
+  consoleLog: true            # Log to stdout for container log collection
+  consoleLogFormat: json      # JSON format for structured logging (EFK/Loki)
+
+Defaults:
+  defaultApplication: ''
+  policyProject: 'DefaultPolicies'
+
+RestAdminListener:
+  port: 7600
+  authorizationEnabled: false  # Enable in production with proper auth
+  hostName: '+'
+
+HTTPListener:
+  port: 7800
+
+ResourceManagers:
+  JVM:
+    # Tune JVM heap based on container memory limits
+    # Set to ~75% of container memory limit
+    jvmMaxHeapSize: 512      # MB — adjust per service needs
+    jvmMinHeapSize: 256      # MB
+
+Statistics:
+  Snapshot:
+    publicationOn: active
+    outputFormat: json
+  Resource:
+    reportingOn: true
+
+Tuning:
+  # Number of additional threads for processing messages
+  # Scale this based on expected concurrency
+  httpConnectorPortRange: '7800-7800'
+  additionalInstances: 0

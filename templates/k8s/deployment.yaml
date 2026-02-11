@@ -1,0 +1,201 @@
+# =============================================================================
+# Kubernetes Deployment for ACE Microservice
+# =============================================================================
+# Replace <service-name> and <registry> with your actual values.
+# =============================================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <service-name>
+  namespace: ace-services
+  labels:
+    app: <service-name>
+    component: integration
+    migrated-from: ace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: <service-name>
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: <service-name>
+        component: integration
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "7600"
+        prometheus.io/path: "/apiv2/resource-statistics"
+    spec:
+      serviceAccountName: ace-service-account
+      containers:
+        - name: ace-server
+          image: <registry>/<service-name>:latest
+          ports:
+            - name: admin
+              containerPort: 7600
+              protocol: TCP
+            - name: http
+              containerPort: 7800
+              protocol: TCP
+          env:
+            - name: LICENSE
+              value: "accept"
+            - name: ACE_SERVER_NAME
+              value: "<service-name>"
+            # Reference secrets for credentials
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: <service-name>-secrets
+                  key: db-password
+                  optional: true
+            - name: MQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: <service-name>-secrets
+                  key: mq-password
+                  optional: true
+          # Mount externalized configuration
+          volumeMounts:
+            - name: server-conf
+              mountPath: /home/aceuser/initial-config/serverconf/
+              readOnly: true
+            - name: policy-conf
+              mountPath: /home/aceuser/initial-config/policy/
+              readOnly: true
+          # Liveness probe — restart if server is unresponsive
+          livenessProbe:
+            httpGet:
+              path: /apiv2/servers/defaultServer
+              port: 7600
+            initialDelaySeconds: 60
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          # Readiness probe — only route traffic when ready
+          readinessProbe:
+            httpGet:
+              path: /apiv2/servers/defaultServer
+              port: 7600
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 2
+          # Startup probe — allow slow startup without killing the pod
+          startupProbe:
+            httpGet:
+              path: /apiv2/servers/defaultServer
+              port: 7600
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 12
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+      volumes:
+        - name: server-conf
+          configMap:
+            name: <service-name>-server-conf
+        - name: policy-conf
+          configMap:
+            name: <service-name>-policy-conf
+            optional: true
+---
+# =============================================================================
+# Service — expose the ACE microservice within the cluster
+# =============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: <service-name>
+  namespace: ace-services
+  labels:
+    app: <service-name>
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 7800
+      targetPort: 7800
+      protocol: TCP
+    - name: admin
+      port: 7600
+      targetPort: 7600
+      protocol: TCP
+  selector:
+    app: <service-name>
+---
+# =============================================================================
+# ConfigMap — externalized server.conf.yaml
+# =============================================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: <service-name>-server-conf
+  namespace: ace-services
+data:
+  server.conf.yaml: |
+    serverConfVersion: 1
+    Log:
+      consoleLog: true
+      consoleLogFormat: json
+    RestAdminListener:
+      port: 7600
+      authorizationEnabled: false
+      hostName: '+'
+    HTTPListener:
+      port: 7800
+    ResourceManagers:
+      JVM:
+        jvmMaxHeapSize: 512
+        jvmMinHeapSize: 256
+    Statistics:
+      Snapshot:
+        publicationOn: active
+        outputFormat: json
+---
+# =============================================================================
+# HorizontalPodAutoscaler — auto-scale based on CPU utilization
+# =============================================================================
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: <service-name>
+  namespace: ace-services
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: <service-name>
+  minReplicas: 2
+  maxReplicas: 8
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Pods
+          value: 2
+          periodSeconds: 60
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Pods
+          value: 1
+          periodSeconds: 120
