@@ -1,0 +1,17 @@
+{
+  "name": "ace-replacement-service",
+  "version": "1.0.0",
+  "description": "Native Node.js microservice replacing ACE integration flow",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test src/**/*.test.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "prom-client": "^15.1.0",
+    "winston": "^3.14.0"
+  },
+  "devDependencies": {}
+}

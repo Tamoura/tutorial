@@ -1,0 +1,67 @@
+# =============================================================================
+# Application config — replaces ACE server.conf.yaml + policy files
+# =============================================================================
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ace-replacement-service
+
+# --- IBM MQ connection (uncomment if replacing MQ-based ACE flow) ---
+# ibm:
+#   mq:
+#     queue-manager: QM1
+#     channel: DEV.APP.SVRCONN
+#     conn-name: mq-host(1414)
+#     user: app
+#     password: ${MQ_PASSWORD}
+
+# --- Kafka connection (uncomment if replacing Kafka-based ACE flow) ---
+# spring.kafka:
+#   bootstrap-servers: kafka:9092
+#   consumer:
+#     group-id: ${spring.application.name}
+#     auto-offset-reset: earliest
+
+# --- Database connection (uncomment if replacing DB-based ACE flow) ---
+# spring.datasource:
+#   url: jdbc:postgresql://${DB_HOST:localhost}:5432/mydb
+#   username: ${DB_USER}
+#   password: ${DB_PASSWORD}
+
+# --- Actuator (replaces ACE admin API monitoring) ---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+# --- Resilience4j (replaces ACE timeout/retry nodes) ---
+resilience4j:
+  circuitbreaker:
+    instances:
+      downstream:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+  retry:
+    instances:
+      downstream:
+        max-attempts: 3
+        wait-duration: 1s
+
+# --- Logging (replaces ACE activity log) ---
+logging:
+  level:
+    root: INFO
+    com.example.service: DEBUG
+  pattern:
+    console: '{"timestamp":"%d","level":"%p","service":"${spring.application.name}","message":"%m"}%n'
