@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-30T18:05:19+00:00",
+  "title": "Design System: Sukkarah",
+  "extensions": {
+    "colorMeta": {
+      "board": {
+        "role": "primary",
+        "displayName": "Pistachio Board",
+        "canonical": "#4b6a2e",
+        "tonalRamp": [
+          "oklch(15% 0.043 132)",
+          "oklch(26% 0.057 132)",
+          "oklch(37% 0.071 132)",
+          "oklch(48% 0.085 132)",
+          "oklch(59% 0.089 132)",
+          "oklch(70% 0.075 132)",
+          "oklch(82% 0.060 132)",
+          "oklch(95% 0.043 132)"
+        ]
+      },
+      "board-deep": {
+        "role": "primary",
+        "displayName": "Board Shadow Green",
+        "canonical": "#34491f",
+        "tonalRamp": [
+          "oklch(15% 0.032 131)",
+          "oklch(26% 0.043 131)",
+          "oklch(37% 0.053 131)",
+          "oklch(48% 0.064 131)",
+          "oklch(59% 0.067 131)",
+          "oklch(70% 0.056 131)",
+          "oklch(82% 0.045 131)",
+          "oklch(95% 0.032 131)"
+        ]
+      },
+      "rose": {
+        "role": "secondary",
+        "displayName": "Seal Rose",
+        "canonical": "#e2a3a8",
+        "tonalRamp": [
+          "oklch(15% 0.034 14)",
+          "oklch(26% 0.045 14)",
+          "oklch(37% 0.057 14)",
+          "oklch(48% 0.068 14)",
+          "oklch(59% 0.071 14)",
+          "oklch(70% 0.060 14)",
+          "oklch(82% 0.047 14)",
+          "oklch(95% 0.034 14)"
+        ]
+      },
+      "rose-deep": {
+        "role": "secondary",
+        "displayName": "Deep Rose Ink",
+        "canonical": "#a3445a",
+        "tonalRamp": [
+          "oklch(15% 0.058 8)",
+          "oklch(26% 0.077 8)",
+          "oklch(37% 0.096 8)",
+          "oklch(48% 0.115 8)",
+          "oklch(59% 0.120 8)",
+          "oklch(70% 0.101 8)",
+          "oklch(82% 0.080 8)",
+          "oklch(95% 0.058 8)"
+        ]
+      },
+      "label-rule": {
+        "role": "secondary",
+        "displayName": "Sticker Rule Rose",
+        "canonical": "#c9677a",
+        "tonalRamp": [
+          "oklch(15% 0.057 9)",
+          "oklch(26% 0.076 9)",
+          "oklch(37% 0.095 9)",
+          "oklch(48% 0.113 9)",
+          "oklch(59% 0.119 9)",
+          "oklch(70% 0.100 9)",
+          "oklch(82% 0.079 9)",
+          "oklch(95% 0.057 9)"
+        ]
+      },
+      "foil": {
+        "role": "tertiary",
+        "displayName": "Brass Foil",
+        "canonical": "#e9c97f",
+        "tonalRamp": [
+          "oklch(15% 0.045 87)",
+          "oklch(26% 0.060 87)",
+          "oklch(37% 0.075 87)",
+          "oklch(48% 0.090 87)",
+          "oklch(59% 0.094 87)",
+          "oklch(70% 0.079 87)",
+          "oklch(82% 0.063 87)",
+          "oklch(95% 0.045 87)"
+        ]
+      },
+      "foil-light": {
+        "role": "tertiary",
+        "displayName": "Pale Foil",
+        "canonical": "#f6e3b4",
+        "tonalRamp": [
+          "oklch(15% 0.029 89)",
+          "oklch(26% 0.039 89)",
+          "oklch(37% 0.049 89)",
+          "oklch(48% 0.058 89)",
+          "oklch(59% 0.061 89)",
+          "oklch(70% 0.051 89)",
+          "oklch(82% 0.041 89)",
+          "oklch(95% 0.029 89)"
+        ]
+      },
+      "tissue": {
+        "role": "neutral",
+        "displayName": "Rose Tissue",
+        "canonical": "#f6dfe3",
+        "tonalRamp": [
+          "oklch(15% 0.012 6)",
+          "oklch(26% 0.016 6)",
+          "oklch(37% 0.019 6)",
+          "oklch(48% 0.023 6)",
+          "oklch(59% 0.024 6)",
+          "oklch(70% 0.021 6)",
+          "oklch(82% 0.016 6)",
+          "oklch(95% 0.012 6)"
+        ]
+      },
+      "tissue-deep": {
+        "role": "neutral",
+        "displayName": "Folded Tissue",
+        "canonical": "#ecc6ce",
+        "tonalRamp": [
+          "oklch(15% 0.020 4)",
+          "oklch(26% 0.027 4)",
+          "oklch(37% 0.033 4)",
+          "oklch(48% 0.040 4)",
+          "oklch(59% 0.042 4)",
+          "oklch(70% 0.035 4)",
+          "oklch(82% 0.028 4)",
+          "oklch(95% 0.020 4)"
+        ]
+      },
+      "label": {
+        "role": "neutral",
+        "displayName": "Sticker Stock",
+        "canonical": "#fffaf2",
+        "tonalRamp": [
+          "oklch(15% 0.012 80)",
+          "oklch(26% 0.012 80)",
+          "oklch(37% 0.012 80)",
+          "oklch(48% 0.012 80)",
+          "oklch(59% 0.012 80)",
+          "oklch(70% 0.012 80)",
+          "oklch(82% 0.012 80)",
+          "oklch(95% 0.012 80)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Board Ink",
+        "canonical": "#1f2c14",
+        "tonalRamp": [
+          "oklch(15% 0.020 132)",
+          "oklch(26% 0.027 132)",
+          "oklch(37% 0.034 132)",
+          "oklch(48% 0.041 132)",
+          "oklch(59% 0.043 132)",
+          "oklch(70% 0.036 132)",
+          "oklch(82% 0.028 132)",
+          "oklch(95% 0.020 132)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "#46523a",
+        "tonalRamp": [
+          "oklch(15% 0.019 130)",
+          "oklch(26% 0.025 130)",
+          "oklch(37% 0.031 130)",
+          "oklch(48% 0.037 130)",
+          "oklch(59% 0.039 130)",
+          "oklch(70% 0.033 130)",
+          "oklch(82% 0.026 130)",
+          "oklch(95% 0.019 130)"
+        ]
+      },
+      "on-board": {
+        "role": "neutral",
+        "displayName": "Printed Cream",
+        "canonical": "#f8f1e2",
+        "tonalRamp": [
+          "oklch(15% 0.010 86)",
+          "oklch(26% 0.013 86)",
+          "oklch(37% 0.016 86)",
+          "oklch(48% 0.019 86)",
+          "oklch(59% 0.020 86)",
+          "oklch(70% 0.017 86)",
+          "oklch(82% 0.013 86)",
+          "oklch(95% 0.010 86)"
+        ]
+      },
+      "on-board-soft": {
+        "role": "neutral",
+        "displayName": "Printed Sage",
+        "canonical": "#dfe6cd",
+        "tonalRamp": [
+          "oklch(15% 0.016 120)",
+          "oklch(26% 0.021 120)",
+          "oklch(37% 0.026 120)",
+          "oklch(48% 0.031 120)",
+          "oklch(59% 0.032 120)",
+          "oklch(70% 0.027 120)",
+          "oklch(82% 0.022 120)",
+          "oklch(95% 0.016 120)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The foil wordmark on the lid and the greeting printed under the lid; reserved for the box itself.",
+        "fluid": "clamp(4.25rem, 8vw, 6rem) wordmark; clamp(3rem, 6.5vw, 6rem) greeting"
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings; Board Ink on tissue and labels, Brass Foil on board.",
+        "fluid": "clamp(2.5rem, 5vw, 4.25rem)"
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "The headline on the lid sticker (h1).",
+        "fluid": "clamp(2.2rem, 3.4vw, 3.15rem); 2.05rem on phones"
+      },
+      "sticker-name": {
+        "displayName": "Sticker Name",
+        "purpose": "The name of each sweet on its compartment label."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All reading text; 330 weight in English. Ledes and notes about 36ch."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "Short paragraphs in the gift and coffee passages."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Lid contents list and the action label; nav links use 0.95rem at 450."
+      },
+      "fine": {
+        "displayName": "Fine",
+        "purpose": "Caption tags and field names; fill-in placeholders at 0.72rem."
+      },
+      "wordmark-latin": {
+        "displayName": "Wordmark Latin",
+        "purpose": "Spaced SUKKARAH under the Arabic wordmark; 0.72rem at 0.32em in the seal band."
+      }
+    },
+    "shadows": [
+      {
+        "name": "lid-lift",
+        "value": "0 calc(var(--lift) * 2.5rem) calc(var(--lift) * 4rem) rgb(31 44 20 / calc(var(--lift) * (1 - var(--lift)) * 1.8))",
+        "purpose": "The only cast shadow: under the lid while it lifts; zero at rest and once lifted."
+      },
+      {
+        "name": "window-bevel",
+        "value": "inset 0 0 0 1px #34491f, inset 0 3px 0 1px rgb(255 255 255 / 0.1), inset 0 14px 18px -12px rgb(20 30 10 / 0.45)",
+        "purpose": "The cut edge of the board around the die-cut window."
+      },
+      {
+        "name": "crease",
+        "value": "border: 1px solid rgb(20 30 10 / 0.35); box-shadow: inset 1px 1px 0 rgb(255 255 255 / 0.09), 1px 1px 0 rgb(255 255 255 / 0.09)",
+        "purpose": "The blind-embossed crease line inset 0.85rem from the lid edge."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "House easing for hover transitions (action fill 0.25s, arrow nudge 0.35s)."
+      },
+      {
+        "name": "lid-open",
+        "value": "scroll-scrubbed; progress eased 1-(1-p)^3; widen = clamp(0, open/0.4, 1); lift = clamp(0, (open-0.3)/0.7, 1); board translateY(-104% × lift) scale(1 + 0.03 × lift); 62svh of scroll",
+        "purpose": "The signature: the window widens, then the lid lifts off to reveal the tray on tissue. Disabled under prefers-reduced-motion or viewport height below 560px."
+      },
+      {
+        "name": "toggle-invert",
+        "value": "background-color 0.2s, color 0.2s",
+        "purpose": "Language toggle hover inversion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "760px"
+      },
+      {
+        "name": "tablet",
+        "value": "1080px"
+      },
+      {
+        "name": "lid-open-min-height",
+        "value": "560px (min-height)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "action-primary",
+      "description": "The one filled control: board-green block with a drawn down-arrow; leads into the box.",
+      "html": "<a class=\"ds-action\" href=\"#\" dir=\"rtl\"><span>شوف ما في العلبة</span><svg class=\"ds-action__arrow\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M10 3v13M4.5 10.5 10 16l5.5-5.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-action{display:inline-flex;align-items:center;gap:0.6rem;min-height:3rem;padding:0.7rem 1.35rem;background:var(--board,#4b6a2e);color:var(--on-board,#f8f1e2);border-radius:0.4rem;font-family:\"Readex Pro\",system-ui,sans-serif;font-weight:500;text-decoration:none;transition:background-color 0.25s var(--ease-out,cubic-bezier(0.16,1,0.3,1));} .ds-action:hover{background:var(--board-deep,#34491f);} .ds-action:focus-visible{outline:2px solid var(--ink,#1f2c14);outline-offset:3px;} .ds-action__arrow{width:1.15rem;height:1.15rem;transition:transform 0.35s var(--ease-out,cubic-bezier(0.16,1,0.3,1));} .ds-action:hover .ds-action__arrow{transform:translateY(3px);}"
+    },
+    {
+      "name": "Sticker Label",
+      "kind": "card",
+      "refersTo": "sticker",
+      "description": "White label stock with a double rose rule, pressed on slightly askew; holds every name and description.",
+      "html": "<div class=\"ds-sticker\" dir=\"rtl\"><h3 class=\"ds-sticker__name\">كنافة</h3><p class=\"ds-sticker__desc\">مخبوزة في صينية مستديرة، وفي وسطها الفستق.</p></div>",
+      "css": ".ds-sticker{max-width:18rem;background:var(--label,#fffaf2);color:var(--ink,#1f2c14);border:1.5px solid var(--label-rule,#c9677a);outline:1px solid var(--label-rule,#c9677a);outline-offset:-7px;border-radius:0.6rem;padding:1rem 1.2rem 1.05rem;transform:rotate(-1deg);font-family:\"Readex Pro\",system-ui,sans-serif;font-weight:350;line-height:1.7;} .ds-sticker__name{margin:0;font-family:\"Aref Ruqaa\",\"Readex Pro\",serif;font-weight:700;font-size:1.6rem;line-height:1.3;} .ds-sticker__desc{margin:0.3rem 0 0;font-size:0.9rem;line-height:1.6;color:var(--ink-soft,#46523a);}"
+    },
+    {
+      "name": "Seal Band Navigation",
+      "kind": "nav",
+      "refersTo": "seal-band",
+      "description": "Rose paper band across the top of the box: Ruqʿah wordmark, section links, language toggle.",
+      "html": "<header class=\"ds-band\" dir=\"rtl\"><a class=\"ds-band__mark\" href=\"#\"><span class=\"ds-band__ar\">سكرة</span><span class=\"ds-band__lat\">SUKKARAH</span></a><nav class=\"ds-band__nav\"><a href=\"#\">ما في العلبة</a><a href=\"#\">للهدايا</a><a href=\"#\">مع القهوة</a></nav><button class=\"ds-band__lang\" type=\"button\">EN</button></header>",
+      "css": ".ds-band{display:flex;align-items:center;gap:1.5rem;min-height:4.25rem;padding-inline:1.5rem;background:var(--rose,#e2a3a8);border-block:1px solid rgb(31 44 20 / 0.22);font-family:\"Readex Pro\",system-ui,sans-serif;} .ds-band__mark{display:flex;align-items:baseline;gap:0.75rem;color:var(--ink,#1f2c14);text-decoration:none;} .ds-band__ar{font-family:\"Aref Ruqaa\",\"Readex Pro\",serif;font-weight:700;font-size:1.85rem;line-height:1;} .ds-band__lat{font-size:0.72rem;font-weight:500;letter-spacing:0.32em;} .ds-band__nav{display:flex;gap:1.5rem;margin-inline-start:auto;} .ds-band__nav a{color:var(--ink,#1f2c14);font-size:0.95rem;font-weight:450;text-decoration:none;text-underline-offset:0.45em;text-decoration-thickness:1px;} .ds-band__nav a:hover{text-decoration-line:underline;} .ds-band__nav a:focus-visible,.ds-band__lang:focus-visible{outline:2px solid var(--ink,#1f2c14);outline-offset:3px;} .ds-band__lang{font:inherit;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;color:var(--ink,#1f2c14);background:transparent;border:1px solid var(--ink,#1f2c14);border-radius:4px;padding:0.3rem 0.7rem;min-width:2.75rem;min-height:2.25rem;cursor:pointer;transition:background-color 0.2s,color 0.2s;} .ds-band__lang:hover{background:var(--ink,#1f2c14);color:var(--rose,#e2a3a8);}"
+    },
+    {
+      "name": "Fill-in Field",
+      "kind": "input",
+      "refersTo": "sticker",
+      "description": "A label field left blank on purpose: field name beside a dotted fill-in line, for facts not yet confirmed.",
+      "html": "<dl class=\"ds-fields\" dir=\"rtl\"><div><dt>الحجم</dt><dd><span class=\"ds-fill\">لم يُحدد بعد</span></dd></div><div><dt>السعر</dt><dd><span class=\"ds-fill\">لم يُحدد بعد</span></dd></div></dl>",
+      "css": ".ds-fields{display:flex;flex-wrap:wrap;gap:0.4rem 1.4rem;margin:0;padding:0.8rem 1rem;background:var(--label,#fffaf2);color:var(--ink,#1f2c14);font-size:0.8rem;font-family:\"Readex Pro\",system-ui,sans-serif;} .ds-fields>div{display:flex;align-items:baseline;gap:0.45rem;} .ds-fields dt{font-weight:500;} .ds-fields dd{margin:0;} .ds-fill{display:inline-block;min-width:4.5rem;padding-inline:0.2rem;font-size:0.72rem;color:var(--ink-soft,#46523a);border-bottom:1.5px dotted var(--ink-soft,#46523a);}"
+    },
+    {
+      "name": "Placeholder Tag",
+      "kind": "chip",
+      "refersTo": "placeholder-tag",
+      "description": "Small outlined Deep Rose tag marking a working product name.",
+      "html": "<span class=\"ds-temp\" dir=\"rtl\">اسم مؤقت</span>",
+      "css": ".ds-temp{display:inline-block;padding:0.05rem 0.45rem;font-family:\"Readex Pro\",system-ui,sans-serif;font-size:0.7rem;font-weight:500;line-height:1.6;color:var(--rose-deep,#a3445a);background:var(--label,#fffaf2);border:1px solid currentColor;border-radius:0.25rem;}"
+    },
+    {
+      "name": "Caption Tag",
+      "kind": "chip",
+      "refersTo": "caption-tag",
+      "description": "A small paper tag naming a detail photograph inside a compartment.",
+      "html": "<span class=\"ds-caption\" dir=\"rtl\">اللوز، عن قرب</span>",
+      "css": ".ds-caption{display:inline-block;padding:0.3rem 0.7rem;background:var(--label,#fffaf2);color:var(--ink,#1f2c14);border:1px solid var(--label-rule,#c9677a);border-radius:0.35rem;font-family:\"Readex Pro\",system-ui,sans-serif;font-size:0.8rem;font-weight:450;}"
+    },
+    {
+      "name": "Lid Window",
+      "kind": "custom",
+      "refersTo": "lid-window",
+      "description": "Signature: a die-cut window in the green lid showing the tray, with a bevelled cut edge, cellophane sheen and the crease line.",
+      "html": "<div class=\"ds-lid\"><div class=\"ds-lid__crease\"></div><div class=\"ds-lid__window\"></div></div>",
+      "css": ".ds-lid{position:relative;width:100%;max-width:36rem;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(160deg,#c98a3e,#e7b86b 45%,#f3e0c0);} .ds-lid__window{position:absolute;top:1.5rem;bottom:1.5rem;inset-inline-start:1.5rem;width:55%;border-radius:1.6rem;box-shadow:0 0 0 200vmax var(--board,#4b6a2e),inset 0 0 0 1px var(--board-deep,#34491f),inset 0 3px 0 1px rgb(255 255 255 / 0.1),inset 0 14px 18px -12px rgb(20 30 10 / 0.45);background:linear-gradient(118deg,transparent 34%,rgb(255 255 255 / 0.2) 44%,rgb(255 255 255 / 0.05) 52%,transparent 60%);} .ds-lid__crease{position:absolute;z-index:1;inset:0.85rem;border:1px solid rgb(20 30 10 / 0.35);box-shadow:inset 1px 1px 0 rgb(255 255 255 / 0.09),1px 1px 0 rgb(255 255 255 / 0.09);}"
+    },
+    {
+      "name": "Compartment Tray",
+      "kind": "card",
+      "refersTo": "tray",
+      "description": "Signature: the green board frame holding photographs in unequal compartments, each with its sticker.",
+      "html": "<div class=\"ds-tray\"><div class=\"ds-cell ds-cell--a\"></div><div class=\"ds-cell\"></div><div class=\"ds-cell\"></div><div class=\"ds-cell ds-cell--c\"></div></div>",
+      "css": ".ds-tray{display:grid;grid-template-columns:1.15fr 1fr 1.15fr;grid-template-rows:7rem 4.5rem;grid-template-areas:\"a b c\" \"a d c\";gap:0.75rem;padding:0.75rem;background:var(--board,#4b6a2e);border-radius:0.3rem;max-width:30rem;} .ds-cell{background:var(--tissue-deep,#ecc6ce);border-radius:0.15rem;} .ds-cell--a{grid-area:a;} .ds-cell--c{grid-area:c;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Sweets Box",
+    "overview": "The whole site is one printed Sukkarah box held in the hands. Its outside is deep pistachio-green board with a brass-foil wordmark and a rose paper seal band across the top; its inside is rose tissue paper, and every piece of information is written on a white sticker label pressed onto the board or the tissue. The visitor sees the tray through a die-cut window in the lid, the lid lifts away as they scroll, and the rest of the page alternates between the inside of the box (tissue) and its outside (board), ending on the box's base.\n\nDensity is low and tactile. The real kitchen photographs carry the colour and appetite; the box supplies only flat printed board, foil, paper and labels around them. Arabic leads, right to left, with a Ruqʿah calligraphic voice for names and a clean Arabic sans for everything read. Depth is physical and sparing: a crease line, the bevel of the die-cut, and one cast shadow while the lid is in the air. The page is light-only (`color-scheme: light`); there is no dark theme.\n\nThe world rejects the cream-and-burgundy patisserie page: a hero photo over a row of equal product cards.",
+    "keyCharacteristics": [
+      "Two materials alternate by section: green board (outside of the box) and rose tissue (inside the box).",
+      "Every piece of text that names or describes a sweet sits on a white sticker label with a double rose rule, set slightly askew.",
+      "Photographs sit in die-cut openings and compartments, never as free-floating cards.",
+      "Ruqʿah calligraphy for names and headings; Readex Pro for reading text and labels.",
+      "One signature motion: the lid window widens and the lid lifts off, driven by scroll."
+    ],
+    "rules": [
+      {
+        "name": "The Two Materials Rule",
+        "body": "A content section is either board or tissue, never a third surface; the only other surfaces are the rose seal band and paper pieces (stickers and tags). Board sections set text in Printed Cream, Printed Sage or Brass Foil; tissue sections set text in Board Ink, Faded Ink, or Deep Rose Ink at display size.",
+        "section": "colors"
+      },
+      {
+        "name": "The Foil Is For Display Rule",
+        "body": "Brass Foil on Pistachio Board reaches only large-text contrast, so it is used for the wordmark and for display-size headings, never for body or label text. Small text on board uses Pale Foil, Printed Cream or Printed Sage.",
+        "section": "colors"
+      },
+      {
+        "name": "The Rose Is Paper Rule",
+        "body": "Seal Rose is a paper (band, ribbon); Deep Rose Ink is a print colour; Sticker Rule Rose is a border. None of them fills a button or a large text block.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ruqʿah Names Rule",
+        "body": "Aref Ruqaa is for names: the wordmark, headings, and the name of each sweet. Descriptions, lists, fields and navigation are always Readex Pro.",
+        "section": "typography"
+      },
+      {
+        "name": "The Light Body Rule",
+        "body": "Reading text is set light (350 in Arabic, 330 in English) on generous leading (1.7–1.8); weight 500 is kept for labels, field names and actions.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Cast Shadow Rule",
+        "body": "Nothing on the page casts a drop shadow except the lid while it lifts. Stickers, photos, buttons and the tray sit flat on their material.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hand-Pressed Label Rule",
+        "body": "Sticker labels may rotate by up to about one degree (-1deg, 0.6deg, 0.8deg in use); photographs, the tray and the window never rotate.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do alternate sections between Pistachio Board and Rose Tissue; the order of materials tells the visitor whether they are outside or inside the box.",
+      "Do put every sweet's name and description on a sticker label with the double rose rule, set within about one degree of straight.",
+      "Do set names and headings in Aref Ruqaa 700 and everything read in Readex Pro at 350, with 1.7–1.8 leading.",
+      "Do keep Brass Foil to the wordmark and display-size headings on board.",
+      "Do show an unconfirmed fact as a labelled blank (dotted fill-in line or placeholder tag), never as an invented value.",
+      "Do let the real photographs carry the colour; frame them in die-cut openings and compartments.",
+      "Do keep the lid opening scroll-driven and fully disabled under reduced motion."
+    ],
+    "donts": [
+      "Don't build the cream-and-burgundy patisserie page: a hero photo over a row of equal product cards.",
+      "Don't add drop shadows to stickers, photos, buttons or panels; the lid's lift is the only cast shadow.",
+      "Don't round the board itself; only openings and paper pieces have corners.",
+      "Don't set body, label or navigation text in Brass Foil or Seal Rose; Deep Rose Ink is for display print and the small placeholder tag on label stock.",
+      "Don't set descriptions, lists or fields in Ruqʿah.",
+      "Don't rotate photographs, the tray or the window; only labels sit askew."
+    ]
+  }
+}

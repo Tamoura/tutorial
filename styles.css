@@ -3,9 +3,7 @@
 :root {
   --board: #4b6a2e;
   --board-deep: #34491f;
-  --board-hi: #6f8f49;
   --foil: #e9c97f;
-  --foil-deep: #b88e3a;
   --foil-light: #f6e3b4;
   --rose: #e2a3a8;
   --rose-deep: #a3445a;
@@ -657,7 +655,6 @@ ul { padding: 0; list-style: none; }
 .base__note { margin-top: 0.4rem; font-size: 0.8rem; opacity: 0.85; }
 
 .gifts :focus-visible,
-.visit__photo :focus-visible,
 .base :focus-visible { outline-color: var(--foil); }
 
 /* ---------- English (LTR) adjustments ---------- */
