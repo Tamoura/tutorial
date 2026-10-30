@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>سكّرة · حلويات عربية في قطر</title>
+  <meta name="description" content="سكّرة: كنافة، بسبوسة باللوز، صواني بطبقات القشطة، وصواني مغلّفة للهدايا. من مطبخ سكّرة في قطر.">
+  <meta name="theme-color" content="#4b6a2e">
+  <link rel="preload" href="assets/fonts/aref-ruqaa-700-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/readex-pro-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#inside" data-i18n="skip">انتقل إلى الأصناف</a>
+
+  <header class="band">
+    <div class="band__inner">
+      <a class="band__mark" href="#top" aria-label="سكّرة، أعلى الصفحة" data-i18n-aria="homeLabel">
+        <span class="band__mark-ar" lang="ar">سكّرة</span>
+        <span class="band__mark-lat">SUKKARAH</span>
+      </a>
+      <nav class="band__nav" aria-label="الأقسام" data-i18n-aria="navLabel">
+        <a href="#inside" data-i18n="navInside">ما في العلبة</a>
+        <a href="#gifts" data-i18n="navGifts">للهدايا</a>
+        <a href="#coffee" data-i18n="navCoffee">مع القهوة</a>
+        <a href="#visit" data-i18n="navVisit">زورونا</a>
+      </nav>
+      <button class="band__lang" type="button" id="lang-toggle" lang="en" aria-label="Switch to English">EN</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- The lid: a sticky stage. The lid layer lifts away on scroll to show the inside. -->
+    <section class="lid" aria-labelledby="lid-title">
+      <div class="lid__stage">
+        <div class="lid__inside" aria-hidden="true">
+          <p class="lid__greeting" data-i18n="greeting">بالهنا والعافية</p>
+        </div>
+        <figure class="lid__tray">
+          <img src="assets/photos/layered-tray.jpg" width="900" height="1600"
+               alt="صينية حلى بطبقات مقطّعة مربعات، وجهها مكرمل ومرشوش بالفستق، وقطعة مرفوعة على سكين"
+               data-i18n-alt="trayAlt" fetchpriority="high">
+        </figure>
+
+        <div class="lid__board">
+          <div class="lid__crease" aria-hidden="true"></div>
+          <div class="lid__window" aria-hidden="true"></div>
+
+          <p class="lid__foil" aria-hidden="true">
+            <span class="lid__foil-ar">سكّرة</span>
+            <span class="lid__foil-lat">SUKKARAH</span>
+          </p>
+
+          <div class="sticker lid__sticker">
+            <h1 id="lid-title" class="lid__title" data-i18n="heroTitle">حلاوة تجمعنا،<br>ولحظات تحلى.</h1>
+            <p class="lid__lede" data-i18n="heroLede">من مطبخ سكّرة في قطر: كنافة، بسبوسة باللوز، وصواني بطبقات القشطة.</p>
+            <ul class="lid__contents" aria-label="في العلبة" data-i18n-aria="contentsLabel">
+              <li data-i18n="itemKunafa">كنافة</li>
+              <li data-i18n="itemBasbousa">بسبوسة باللوز</li>
+              <li data-i18n="itemLayered">صينية الطبقات</li>
+              <li data-i18n="itemGift">صواني الهدايا</li>
+            </ul>
+            <a class="action" href="#inside">
+              <span data-i18n="heroAction">شوف ما في العلبة</span>
+              <svg class="action__arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v13M4.5 10.5 10 16l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="inside" id="inside" aria-labelledby="inside-title">
+      <div class="inside__head">
+        <h2 id="inside-title" class="display" data-i18n="insideTitle">ما في العلبة</h2>
+        <p class="inside__note" data-i18n="insideNote">أربعة أصناف من مطبخنا. الأوزان والأسعار تُكتب على كل ملصق عند الإطلاق.</p>
+      </div>
+
+      <div class="tray">
+        <article class="cell cell--kunafa">
+          <img src="assets/photos/kunafa.jpg" width="900" height="1600" loading="lazy"
+               alt="كنافة مستديرة في صينية معدنية، وجهها ذهبي وفي وسطها فستق مجروش"
+               data-i18n-alt="kunafaAlt">
+          <div class="sticker cell__label">
+            <h3 class="cell__name" data-i18n="itemKunafa">كنافة</h3>
+            <p class="cell__desc" data-i18n="kunafaDesc">مخبوزة في صينية مستديرة، بالقطر، وفي وسطها الفستق.</p>
+            <dl class="fields">
+              <div><dt data-i18n="fieldWeight">الحجم</dt><dd><span class="fill"><span class="sr" data-i18n="tbd">لم يُحدد بعد</span></span></dd></div>
+              <div><dt data-i18n="fieldPrice">السعر</dt><dd><span class="fill"><span class="sr" data-i18n="tbd">لم يُحدد بعد</span></span></dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="cell cell--basbousa">
+          <img src="assets/photos/basbousa.jpg" width="900" height="1600" loading="lazy"
+               alt="بسبوسة مستديرة على صحن زجاجي، مغطاة باللوز المجروش ولامعة بالقطر"
+               data-i18n-alt="basbousaAlt">
+          <div class="sticker cell__label">
+            <h3 class="cell__name" data-i18n="itemBasbousa">بسبوسة باللوز</h3>
+            <p class="cell__desc" data-i18n="basbousaDesc">سميد مخبوز في قرص كامل، وجهه لوز محمّص وقطر.</p>
+            <dl class="fields">
+              <div><dt data-i18n="fieldWeight">الحجم</dt><dd><span class="fill"><span class="sr" data-i18n="tbd">لم يُحدد بعد</span></span></dd></div>
+              <div><dt data-i18n="fieldPrice">السعر</dt><dd><span class="fill"><span class="sr" data-i18n="tbd">لم يُحدد بعد</span></span></dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <figure class="cell cell--almonds">
+          <img src="assets/photos/basbousa-close.jpg" width="900" height="1600" loading="lazy"
+               alt="لقطة قريبة لوجه البسبوسة: لوز محمّص مجروش فوق سميد ذهبي"
+               data-i18n-alt="almondsAlt">
+          <figcaption class="cell__caption" data-i18n="almondsCaption">لوز محمّص، عن قرب</figcaption>
+        </figure>
+
+        <article class="cell cell--layered">
+          <img src="assets/photos/layered-slice.jpg" width="900" height="1600" loading="lazy"
+               alt="قطعة مرفوعة على سكين تُظهر الطبقات: سميد في الأسفل، قشطة بيضاء، ووجه مكرمل"
+               data-i18n-alt="layeredAlt">
+          <div class="sticker cell__label">
+            <h3 class="cell__name"><span data-i18n="itemLayered">صينية الطبقات</span> <span class="cell__temp" data-i18n="tempName">اسم مؤقت</span></h3>
+            <p class="cell__desc" data-i18n="layeredDesc">قاعدة سميد، طبقة قشطة، ووجه مكرمل يُرشّ عليه الفستق.</p>
+            <dl class="fields">
+              <div><dt data-i18n="fieldWeight">الحجم</dt><dd><span class="fill"><span class="sr" data-i18n="tbd">لم يُحدد بعد</span></span></dd></div>
+              <div><dt data-i18n="fieldPrice">السعر</dt><dd><span class="fill"><span class="sr" data-i18n="tbd">لم يُحدد بعد</span></span></dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="gifts" id="gifts" aria-labelledby="gifts-title">
+      <figure class="gifts__photo">
+        <img src="assets/photos/gift-tray.jpg" width="1600" height="900" loading="lazy"
+             alt="صينية حلى مقطّعة ومغلّفة بالسيلوفان على طاولة رخام بجانب مزهرية نحاسية"
+             data-i18n-alt="giftAlt">
+      </figure>
+      <div class="gifts__copy">
+        <h2 id="gifts-title" class="display display--foil" data-i18n="giftsTitle">هدية تُحمل باليد</h2>
+        <p data-i18n="giftsText">صينية مقطّعة ومغلّفة، تُجهَّز لتُحمل إلى زيارة أو مناسبة. خيارات الأحجام والتغليف تُعلن عند الإطلاق.</p>
+      </div>
+    </section>
+
+    <section class="coffee" id="coffee" aria-labelledby="coffee-title">
+      <figure class="coffee__photo">
+        <img src="assets/photos/slice-coffee.jpg" width="1600" height="900" loading="lazy"
+             alt="قطعة حلى بطبقات على صحن بحافة ذهبية، وبجانبها فنجان قهوة"
+             data-i18n-alt="coffeeAlt">
+      </figure>
+      <div class="coffee__copy">
+        <h2 id="coffee-title" class="display" data-i18n="coffeeTitle">مع فنجان قهوة</h2>
+        <p data-i18n="coffeeText">قطعة على صحن، وفنجان بجانبها. هكذا نحب أن تُقدَّم حلاوة سكّرة للضيف.</p>
+      </div>
+    </section>
+
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <figure class="visit__photo">
+        <img src="assets/photos/basbousa-angle.jpg" width="900" height="1600" loading="lazy"
+             alt="بسبوسة باللوز على صحن زجاجي بجانب مزهرية توليب نحاسية"
+             data-i18n-alt="visitAlt">
+      </figure>
+      <div class="sticker visit__label">
+        <h2 id="visit-title" class="display" data-i18n="visitTitle">من مطبخ سكّرة</h2>
+        <dl class="fields fields--rows">
+          <div><dt data-i18n="fieldCity">المدينة</dt><dd data-i18n="cityValue">قطر</dd></div>
+          <div><dt data-i18n="fieldAddress">العنوان</dt><dd><span class="fill"><span class="sr" data-i18n="tbd">لم يُحدد بعد</span></span></dd></div>
+          <div><dt data-i18n="fieldHours">ساعات العمل</dt><dd><span class="fill"><span class="sr" data-i18n="tbd">لم يُحدد بعد</span></span></dd></div>
+          <div><dt data-i18n="fieldPhone">واتساب</dt><dd><span class="fill"><span class="sr" data-i18n="tbd">لم يُحدد بعد</span></span></dd></div>
+          <div><dt data-i18n="fieldInsta">إنستغرام</dt><dd><span class="fill"><span class="sr" data-i18n="tbd">لم يُحدد بعد</span></span></dd></div>
+        </dl>
+        <p class="visit__note" data-i18n="visitNote">تُكتب هذه التفاصيل على الملصق عند الإطلاق.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="base">
+    <p class="base__mark" aria-hidden="true">سكّرة</p>
+    <p data-i18n="footerLine">حلويات عربية · قطر</p>
+    <p class="base__note" data-i18n="footerNote">معاينة قبل الإطلاق. الأسعار والتفاصيل تُضاف لاحقاً.</p>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
