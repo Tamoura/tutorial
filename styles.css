@@ -9,8 +9,8 @@
   --foil-light: #f6e3b4;
   --rose: #e2a3a8;
   --rose-deep: #a3445a;
-  --tissue: #f7e1dd;
-  --tissue-deep: #edc9c4;
+  --tissue: #f6dfe3;
+  --tissue-deep: #ecc6ce;
   --label: #fffaf2;
   --label-rule: #c9677a;
   --ink: #1f2c14;
@@ -102,6 +102,23 @@ ul { padding: 0; list-style: none; }
 }
 .display--foil { color: var(--foil); }
 
+/* ---------- Wordmark: the diamond sits above the kāf ---------- */
+
+.wordmark {
+  position: relative;
+  display: inline-block;
+}
+.wordmark::before {
+  content: "";
+  position: absolute;
+  right: 57%;
+  top: 0.04em;
+  width: 0.1em;
+  height: 0.1em;
+  background: currentColor;
+  transform: translateX(50%) rotate(45deg);
+}
+
 /* ---------- Seal band (header) ---------- */
 
 .band {
@@ -180,11 +197,14 @@ ul { padding: 0; list-style: none; }
 
 .lid__stage {
   --pad: clamp(1.75rem, 5vh, 3rem);
-  --win-top: var(--pad);
-  --win-h: calc(100% - var(--pad) * 2);
-  --win-w: min(40vw, 36rem);
-  --win-start: max(var(--gutter) + 1.5rem, (100vw - var(--max)) / 2 + var(--gutter) + 1.5rem);
   --open: 0;
+  /* the window widens first, then the lid lifts */
+  --widen: clamp(0, var(--open) / 0.4, 1);
+  --lift: clamp(0, (var(--open) - 0.3) / 0.7, 1);
+  --win-top: calc(var(--pad) * (1 - 0.5 * var(--widen)));
+  --win-h: calc(100% - var(--win-top) * 2);
+  --win-w: calc(min(40vw, 36rem) + var(--widen) * (min(56vw, 50rem) - min(40vw, 36rem)));
+  --win-start: max(var(--gutter) + 1.5rem, (100vw - var(--max)) / 2 + var(--gutter) + 1.5rem);
 
   position: relative;
   height: calc(100svh - var(--band-h));
@@ -211,8 +231,8 @@ ul { padding: 0; list-style: none; }
   line-height: 1.15;
   color: var(--rose-deep);
   text-wrap: balance;
-  opacity: calc(var(--open) * 1.4 - 0.4);
-  transform: translateY(calc((1 - var(--open)) * 1.5rem));
+  opacity: calc(var(--lift) * 1.4 - 0.4);
+  transform: translateY(calc((1 - var(--lift)) * 1.5rem));
 }
 
 .lid__tray {
@@ -240,8 +260,8 @@ ul { padding: 0; list-style: none; }
   display: grid;
   grid-template-columns: calc(var(--win-start) + var(--win-w)) 1fr;
   grid-template-rows: 1fr auto auto 1fr;
-  transform: translate3d(0, calc(var(--open) * -104%), 0) scale(calc(1 + var(--open) * 0.03));
-  box-shadow: 0 calc(var(--open) * 2.5rem) calc(var(--open) * 4rem) rgb(31 44 20 / calc(var(--open) * (1 - var(--open)) * 1.8));
+  transform: translate3d(0, calc(var(--lift) * -104%), 0) scale(calc(1 + var(--lift) * 0.03));
+  box-shadow: 0 calc(var(--lift) * 2.5rem) calc(var(--lift) * 4rem) rgb(31 44 20 / calc(var(--lift) * (1 - var(--lift)) * 1.8));
   will-change: transform;
 }
 
@@ -383,8 +403,8 @@ ul { padding: 0; list-style: none; }
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem 3rem;
+  justify-content: flex-start;
+  gap: 1rem 2.5rem;
 }
 .inside__note {
   max-width: 36ch;
@@ -419,19 +439,11 @@ ul { padding: 0; list-style: none; }
   height: 100%;
   object-fit: cover;
 }
-/* the divider wall casts a little shade into each compartment */
-.cell::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 0 12px 16px -12px rgb(20 30 10 / 0.55);
-  pointer-events: none;
-}
 
 .cell--kunafa { grid-area: kunafa; }
 .cell--kunafa img { object-position: 50% 62%; }
 .cell--basbousa { grid-area: basbousa; }
-.cell--basbousa img { object-position: 50% 72%; }
+.cell--basbousa img { object-position: 50% 40%; }
 .cell--almonds { grid-area: almonds; }
 .cell--almonds img { object-position: 50% 40%; }
 .cell--layered { grid-area: layered; }
@@ -446,7 +458,11 @@ ul { padding: 0; list-style: none; }
   padding: 1rem 1.2rem 1.05rem;
   transform: rotate(-1deg);
 }
-.cell--basbousa .cell__label { transform: rotate(0.8deg); }
+.cell--basbousa .cell__label {
+  width: min(15rem, calc(100% - 2rem));
+  inset-block-end: 0.6rem;
+  transform: rotate(0.8deg);
+}
 
 .cell__name {
   font-family: var(--font-display);
@@ -502,10 +518,11 @@ ul { padding: 0; list-style: none; }
 .fields dt { font-weight: 500; }
 .fill {
   display: inline-block;
-  width: 4.5rem;
-  height: 1em;
+  min-width: 4.5rem;
+  padding-inline: 0.2rem;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
   border-bottom: 1.5px dotted var(--ink-soft);
-  vertical-align: baseline;
 }
 
 /* ---------- Gifts: the outside of the box, tied with a ribbon ---------- */
@@ -545,7 +562,6 @@ ul { padding: 0; list-style: none; }
   object-fit: cover;
   object-position: 55% 50%;
   border-radius: 0.3rem;
-  box-shadow: 0 1.25rem 2.5rem -1.25rem rgb(10 20 5 / 0.6);
 }
 .gifts__copy { max-width: 26rem; }
 .gifts__copy p {
@@ -619,7 +635,7 @@ ul { padding: 0; list-style: none; }
   padding-block: 0.7rem;
   border-bottom: 1px solid rgb(201 103 122 / 0.35);
 }
-.fields--rows .fill { width: min(100%, 15rem); }
+.fields--rows .fill { min-width: min(100%, 15rem); }
 .visit__note { margin-top: 1rem; font-size: 0.85rem; color: var(--ink-soft); }
 
 /* ---------- Base (footer) ---------- */
@@ -689,7 +705,7 @@ html[lang="en"] .lid__greeting { line-height: 1.12; letter-spacing: -0.01em; }
     --win-top: 6.25rem;
     --win-start: 1.25rem;
     --win-w: calc(100% - 2.5rem);
-    --win-h: calc(100% - 6.25rem - 9rem);
+    --win-h: calc(100% - 6.25rem - 9rem + var(--widen) * 6rem);
     min-height: 34rem;
   }
   .lid__inside,
@@ -731,8 +747,17 @@ html[lang="en"] .lid__greeting { line-height: 1.12; letter-spacing: -0.01em; }
     padding: 0.5rem;
     gap: 0.5rem;
   }
-  .cell { aspect-ratio: 4 / 5; }
-  .cell--almonds { aspect-ratio: 16 / 10; }
+  .cell { display: flex; flex-direction: column; }
+  .cell img { position: relative; inset: auto; aspect-ratio: 4 / 3; height: auto; }
+  .cell__label {
+    position: relative;
+    inset: auto;
+    width: auto;
+    margin: -2.25rem 0.75rem 0.75rem;
+  }
+  .cell--basbousa .cell__label { width: auto; inset-block-end: auto; }
+  .cell--almonds { display: block; aspect-ratio: 16 / 10; }
+  .cell--almonds img { position: absolute; inset: 0; height: 100%; aspect-ratio: auto; }
 
   .gifts,
   .coffee,
