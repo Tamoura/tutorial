@@ -111,7 +111,7 @@ ul { padding: 0; list-style: none; }
 .wordmark::before {
   content: "";
   position: absolute;
-  right: 57%;
+  right: 43%;
   top: 0.04em;
   width: 0.1em;
   height: 0.1em;
@@ -702,10 +702,10 @@ html[lang="en"] .lid__greeting { line-height: 1.12; letter-spacing: -0.01em; }
   .band__nav a { font-size: 0.88rem; padding-block: 0.35rem; }
 
   .lid__stage {
-    --win-top: 6.25rem;
+    --win-top: calc(6.25rem - var(--widen) * 4rem);
     --win-start: 1.25rem;
     --win-w: calc(100% - 2.5rem);
-    --win-h: calc(100% - 6.25rem - 9rem + var(--widen) * 6rem);
+    --win-h: calc(100% - 6.25rem - 9rem + var(--widen) * 4rem);
     min-height: 34rem;
   }
   .lid__inside,
