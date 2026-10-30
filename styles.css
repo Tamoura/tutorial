@@ -702,10 +702,10 @@ html[lang="en"] .lid__greeting { line-height: 1.12; letter-spacing: -0.01em; }
   .band__nav a { font-size: 0.88rem; padding-block: 0.35rem; }
 
   .lid__stage {
-    --win-top: calc(6.25rem - var(--widen) * 4rem);
+    --win-top: calc(6.25rem - var(--lift) * 4rem);
     --win-start: 1.25rem;
     --win-w: calc(100% - 2.5rem);
-    --win-h: calc(100% - 6.25rem - 9rem + var(--widen) * 4rem);
+    --win-h: calc(100% - 6.25rem - 9rem + var(--lift) * 4rem);
     min-height: 34rem;
   }
   .lid__inside,
